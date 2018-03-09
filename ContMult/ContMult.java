@@ -12,7 +12,7 @@ class ContMult {
         }
 
         System.out.println("----------------");
-        
+    
         for (int i = 0; i < size; i++) {
             if (i % 2 != 0){
                 array[i] *= array[i-1];         // Домножаем каждое второе на предыдущее
