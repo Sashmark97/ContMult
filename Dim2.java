@@ -1,3 +1,12 @@
+/*
+1. Дан двумерный массив, необходимо вывести двумерный массив у которого четные строки
+   отсортированы по возрастанию, а нечетные по убыванию. Так же в консоль необходимо
+   вывести количество итераций, которое было потрачено при сортировке.
+   
+ВВОД:  Массив построчечно, числа через пробел. В конце ввода ввести пустую строку
+ВЫВОД: Отсортированный массив построчечно
+       Количество итераций
+*/
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,50 +24,22 @@ class Dim2{
                 break;
             }
             arr.add(buff);
+        }              
+        int dir = 1;                                              //if the row is even or odd
+        int it = 0;                                               //global number of iterations
+        for( String str : arr){
+            Sort sor = new Sort();
+            String tf = new String();
+            int itt = 0;                                          //temporary counter of iterations to recieve value from transfer
+            Transfer tr = new Transfer("0", 0);                   //transfer to return string and iterator from sort
+            tr = (Transfer)sor.sort(str, dir);
+            itt = tr.Retint();                                    //assigning returned number of iterations
+            tf = tr.Retstring();                                  //assigning returned string
+            fin.add(tf);                                          //adding string to final array
+            dir += 1;                                             //changing from even to odd or vice versa
+            it += itt;                                            //increasing global iteration counter
         }
-        int count = 1;                                            // even or odd string in Array list
-        int it = 0;                                               // number of iterations
-        for(String str : arr){
-            if(count % 2 == 0){                                   //sorting even rows
-                String tempStr;
-                String[] t1 = str.split(" ");                     // converting string in string array(removing spaces)
-                for (int t = 0; t < t1.length - 1; t++) {
-                    for (int i= 0; i < t1.length - t -1; i++) {
-                        if(t1[i+1].compareTo(t1[i])<0) {
-                            tempStr = t1[i];
-                            t1[i] = t1[i + 1];                    // bubble-sort of integers
-                            t1[i + 1] = tempStr;
-                            it += 1;                              
-                        }
-                    }
-                }
-                String tf = Arrays.toString(t1);                  //converting back to string
-                fin.add(tf);                                      //adding string to final array
-            }
-            else{                                                 //pretty much the same for the odd rows in array
-                String tempStr;
-                String[] t1 = str.split(" ");
-                for (int t = 0; t < t1.length - 1; t++) {
-                    for (int i= 0; i < t1.length - t -1; i++) {
-                        if(t1[i+1].compareTo(t1[i])>0) {
-                            tempStr = t1[i];
-                            t1[i] = t1[i + 1];
-                            t1[i + 1] = tempStr;
-                            it += 1;
-                        }
-                    }
-                }
-                String tf = Arrays.toString(t1);
-                fin.add(tf);
-            }
-        count += 1;                                               //increase the counter of the row
-        }
-
-        for(String str : fin){
-            System.out.format("%s\n", str);                       //printing final array
-        }
-        System.out.format("%d\n", it);                            //printing number of iterations
-        
-
+        Print pr = new Print();
+        pr.printm(fin, it);                                       //printing the array and iterations
         }
     }

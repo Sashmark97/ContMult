@@ -1,3 +1,13 @@
+/*
+2. Создайте массив целых чисел (размер 7 элементов), заполните его только четными
+   числами, а затем каждый второй элемент умножьте на предыдущий
+
+ВВОД:  без ввода, числа генерируются случайным образом
+ВЫВОД: Сгенерированный массив
+       ----------------------
+       Массив перемноженных чисел
+*/
+
 class ContMult {
     public static void main(String[] args) {
         int size = 7;             
@@ -8,10 +18,11 @@ class ContMult {
             array[i] = temp * 2;                // entering random even numbers in array
         }
         for (int i = 0; i < size; i++) {
-            System.out.println(array[i]);       // print array in order to check
+            System.out.print(array[i]);       // print array in order to check
+            System.out.print(" ");
         }
-
-        System.out.println("----------------"); // just a fancy divider for arrays
+        System.out.println("");
+        System.out.println("--------------------------------"); // just a fancy divider for arrays
     
         for (int i = 0; i < size; i++) {
             if (i % 2 != 0){
@@ -20,7 +31,9 @@ class ContMult {
             
         }
         for (int j = 0; j < size; j++) {
-            System.out.println(array[j]);       // printing final version
+            System.out.print(array[j]);       // printing final version
+            System.out.print(" ");
         }
+        System.out.println("");
     }
 }

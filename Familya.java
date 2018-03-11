@@ -1,24 +1,34 @@
+/*
+4. Написать программу, симулирующую семью. В семье должно быть от 2 до 5 детей.
+   Мама и папа. В выводе члены семьи должны называть свое имя, пол и возраст
+
+   ВВОД:  Сведения о членых семьи введены в классе Familia
+   ВЫВОД: Положение в семейной иерархии
+       
+          Имя: ... Возраст: ... Пол: ...
+*/
+
 import javafx.application.Application;
 import java.util.ArrayList;
 
-class Human{                                                                          //creating global human class
-    public String name;
-    public int age;
-    public String gender;
+abstract class Human{                                                                          //creating global human class
+    private String name;
+    private int age;
+    private String gender;
     
-    Human(String s, int a, String g){                                                 //constructor
+    protected Human(String s, int a, String g){                                                 //constructor
         name = s;
         age = a;
         gender = g;
     }
 
-    public void report(){
+    protected void report(){
         System.out.format("Name: %s , Age: %d , Gender: %s \n", name, age, gender); //adding method of reporting parameters
     }
 }
 
 class Father extends Human{                                                         //creating Father class while inheriting both constructor and method from human
-    Father(String s, int a, String g){
+    public Father(String s, int a, String g){
         super(s, a, g);
     }
 
@@ -30,7 +40,7 @@ class Father extends Human{                                                     
 }
 
 class Mother extends Human{                                                         //same as Father
-    Mother(String s, int a, String g){
+    public Mother(String s, int a, String g){
         super(s, a, g);
     }
 
@@ -42,7 +52,7 @@ class Mother extends Human{                                                     
 }
 
 class Child extends Human{                                                          //same as Father
-    Child(String s, int a, String g){
+    public Child(String s, int a, String g){
         super(s, a, g);
     }
 
@@ -54,11 +64,11 @@ class Child extends Human{                                                      
 }
 
 class Family {
-public Father father;
-public Mother mother;
-public ArrayList<Child> children;
+private Father father;
+private Mother mother;
+private ArrayList<Child> children;
 
-    Family(Father f, Mother m, ArrayList<Child> c){                                     //constructor
+    public Family(Father f, Mother m, ArrayList<Child> c){                                     //constructor
         father = f;
         mother = m;
         children = c;
