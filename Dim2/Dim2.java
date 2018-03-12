@@ -30,11 +30,22 @@ class Dim2{
         for( String str : arr){
             Sort sor = new Sort();
             String tf = new String();
-            int itt = 0;                                          //temporary counter of iterations to recieve value from transfer
-            Transfer tr = new Transfer("0", 0);                   //transfer to return string and iterator from sort
-            tr = (Transfer)sor.sort(str, dir);
-            itt = tr.Retint();                                    //assigning returned number of iterations
-            tf = tr.Retstring();                                  //assigning returned string
+            String[] tsplit = str.split(" ");
+            boolean dirbool;
+            int[] num = new int[tsplit.length];
+            int[] tr;
+            for(int j = 0; j < tsplit.length; j++ ){
+                num[j] = Integer.parseInt(tsplit[j]);
+            }
+            if(dir % 2 == 0){
+                dirbool = true;
+            }
+            else{
+                dirbool = false;
+            }
+            tr = sor.sort(num, dirbool);
+            int itt = sor.GetIter();                                            //assigning returned strin
+            tf = Arrays.toString(tr);
             fin.add(tf);                                          //adding string to final array
             dir += 1;                                             //changing from even to odd or vice versa
             it += itt;                                            //increasing global iteration counter
