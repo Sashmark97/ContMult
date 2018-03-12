@@ -23,7 +23,7 @@ class Sort implements ISort{
             return str;
         }
 
-        int GetIter(){
+        public int GetIter(){
             return it;
         }
     }
